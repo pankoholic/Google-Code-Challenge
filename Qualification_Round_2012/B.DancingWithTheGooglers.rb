@@ -17,7 +17,7 @@ class Googler
 			return true
 		end
 		
-		if @points > 28 && req_points > 8
+		if @points > 28
 				return true
 		end
 		
@@ -62,6 +62,7 @@ class Googler
 	end
 end
 
+
 t = gets.to_i
 n = 0
 s = 0
@@ -78,5 +79,19 @@ googlers = Array.new
 	end
 end
 
-test = Googler.new(22)
-p test.at_least_p?(9)
+max = 0
+
+(0...t).each do |i|
+	(0...googlers[i].size).each do |j|
+		supr = 0
+		if googlers[i][j].suprise? && googlers[i][j].at_least_p?(p) && supr < s
+			supr += 1
+			max += 1
+			puts "googler with #{p} points: " + googlers[i][j].points.to_s
+		elsif googlers[i][j].at_least_p?(p)
+			max += 1
+			puts "googler with #{p} points: " + googlers[i][j].points.to_s
+		end
+	end
+end
+p max
